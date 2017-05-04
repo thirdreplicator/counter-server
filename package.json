@@ -1,0 +1,38 @@
+{
+  "name": "counter-server",
+  "version": "1.0.0",
+  "description": "Serve unique autoincremented counter values over HTTP.",
+  "main": "dist/server.js",
+  "scripts": {
+    "test": "mocha -w --compilers js:babel-core/register --require babel-polyfill --recursive test/*_test.js",
+    "watch": "npm run test ",
+    "build": "babel --out-dir dist src"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "author": "David Beckwith",
+  "license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/thirdreplicator/counter-server.git"
+	},
+  "dependencies": {
+    "attrs.argv": "^0.2.0-a",
+    "babel-core": "^6.24.1",
+    "babel-polyfill": "^6.23.0",
+    "babel-preset-latest-node": "^0.2.2",
+    "express": "^4.15.2",
+    "humanize": "0.0.9"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-register": "^6.24.1",
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
+    "mocha": "^3.3.0",
+    "nodemon": "^1.11.0",
+    "supertest": "^3.0.0"
+  }
+}

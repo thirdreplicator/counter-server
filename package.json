@@ -14,10 +14,10 @@
   ],
   "author": "David Beckwith",
   "license": "MIT",
-	"repository": {
-		"type": "git",
-		"url": "git://github.com/thirdreplicator/counter-server.git"
-	},
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/thirdreplicator/counter-server.git"
+  },
   "dependencies": {
     "attrs.argv": "^0.2.0-a",
     "babel-core": "^6.24.1",
@@ -30,7 +30,6 @@
     "babel-cli": "^6.24.1",
     "babel-register": "^6.24.1",
     "chai": "^3.5.0",
-    "chai-http": "^3.0.0",
     "mocha": "^3.3.0",
     "nodemon": "^1.11.0",
     "supertest": "^3.0.0"

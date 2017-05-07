@@ -7,32 +7,30 @@ const app = server.listen(PORT)
 
 const request = require('supertest').agent(app)
 var chai = require('chai')
-var chaiHTTP = require('chai-http')
 
 var expect = chai.expect
-chai.use(chaiHTTP)
 
 describe('Counter server', () => {
-	after(function (done) {
-		app.close();
-		done();
-	});
+  after(function (done) {
+    app.close();
+    done();
+  });
 
   describe('/', async () => {
-		it('should be live', () => {
-			return request
-				.get('/')
-				.expect(200, '{}')
-		})
+    it('should be live', () => {
+      return request
+        .get('/')
+        .expect(200, '{}')
+    })
 
     it('should return the value of all counters being tracked.', async () => {
-			await request.post('/inc/a')
-			await request.post('/inc/b')
-			await request.post('/inc/b')
-			await request.post('/inc/c')
-			await request.post('/inc/c')
-			await request.post('/inc/c')
-			return request.get('/').expect({a: 1, b: 2, c:3}) 
+      await request.post('/inc/a')
+      await request.post('/inc/b')
+      await request.post('/inc/b')
+      await request.post('/inc/c')
+      await request.post('/inc/c')
+      await request.post('/inc/c')
+      return request.get('/').expect({a: 1, b: 2, c:3})
     })
   })
 
@@ -71,18 +69,18 @@ describe('Counter server', () => {
     it('should return json', () => {
       return request
         .post('/inc/asdf')
-				.expect('Content-Type', /json/)
+        .expect('Content-Type', /json/)
     }) // it
 
     it('should return 1 the first time', () => {
-			return request
-				.post('/inc/x')
+      return request
+        .post('/inc/x')
         .expect('1')
     }) // it
 
     it('should return 2 if incremented twice', async () => {
-			await request.post('/inc/moo').expect('1')
-			return request.post('/inc/moo').expect('2')
+      await request.post('/inc/moo').expect('1')
+      return request.post('/inc/moo').expect('2')
     }) // it
   }) // describe /inc/<COUNTER_NAME>
 
@@ -92,7 +90,7 @@ describe('Counter server', () => {
       await request.post('/inc/cow').expect('1')
       await request.post('/inc/cow').expect('2')
       await request.post('/inc/cow').expect('3')
-      await request.get('/counters/cow').expect('3') 
+      await request.get('/counters/cow').expect('3')
       await request.post('/reset/cow')
       return request.get('/counters/cow').expect('0')
     })
@@ -113,7 +111,7 @@ describe('Counter server', () => {
       await request.get('/counters/cow').expect('0')
       await request.get('/counters/fish').expect('0')
       return request.get('/counters/x').expect('0')
-		})
+    })
   })
 
   describe('*', () => {
